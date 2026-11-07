@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regression &amp; Classification – ONNX Demos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header class="top">
+    <p class="eyebrow">ITS 52000 · Applied Machine Learning · HW</p>
+    <h1>PyTorch models running in your browser with ONNX</h1>
+    <p class="lead">Two tabular models trained in PyTorch, exported to ONNX and executed client-side with
+      onnxruntime-web. Pre-processing (imputation, feature transform, standardization) is embedded in each ONNX graph,
+      so the pages send raw values straight to the model.</p>
+  </header>
+
+  <div class="links">
+    <a class="card" href="regression/index.html">
+      <p class="eyebrow">Regression</p>
+      <h2>Concrete compressive strength</h2>
+      <p class="muted">8 mix-design inputs (kg/m³, age in days) → predicted strength in MPa.</p>
+      <p id="regInfo" class="muted"></p>
+    </a>
+    <a class="card" href="classification/index.html">
+      <p class="eyebrow">Classification</p>
+      <h2>Diabetes risk (Pima)</h2>
+      <p class="muted">8 clinical measurements → probability of diabetes.</p>
+      <p id="clfInfo" class="muted"></p>
+    </a>
+  </div>
+
+  <footer>Author: Hoang Thien Thanh Le (Tea) · Purdue University Northwest · Educational demo, not medical or engineering advice.</footer>
+</main>
+<script>
+  fetch("regression/metrics.json").then(r => r.json()).then(m => {
+    document.getElementById("regInfo").textContent =
+      `Deployed: ${m.best_model} · test R² = ${m.test_metrics.R2.toFixed(3)}`;
+  }).catch(() => {});
+  fetch("classification/metrics.json").then(r => r.json()).then(m => {
+    document.getElementById("clfInfo").textContent =
+      `Deployed: ${m.best_model} · test F1 = ${m.test_metrics.F1.toFixed(3)}`;
+  }).catch(() => {});
+</script>
+</body>
+</html>

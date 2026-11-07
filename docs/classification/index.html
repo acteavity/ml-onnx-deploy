@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabetes Risk Classifier</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="top">
+    <p class="eyebrow"><a href="../index.html">← Home</a> · Classification · PyTorch → ONNX</p>
+    <h1>Diabetes risk (Pima Indians Diabetes)</h1>
+    <p class="lead">Enter 8 clinical measurements. Unknown glucose, blood pressure, skin thickness, insulin or BMI can be
+      left at <b>0</b> – the ONNX model imputes them with the training median, then standardizes and returns
+      P(diabetes).</p>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Patient measurements</h2>
+      <div class="fields">
+        <label>Pregnancies <small>count</small><input type="number" id="f0" step="1" min="0" value="6"></label>
+        <label>Glucose <small>mg/dL, 2-h oral glucose tolerance test</small><input type="number" id="f1" step="any" value="148"></label>
+        <label>Blood pressure <small>diastolic, mm Hg</small><input type="number" id="f2" step="any" value="72"></label>
+        <label>Skin thickness <small>triceps skinfold, mm</small><input type="number" id="f3" step="any" value="35"></label>
+        <label>Insulin <small>2-h serum, µU/mL (0 = unknown)</small><input type="number" id="f4" step="any" value="0"></label>
+        <label>BMI <small>kg/m²</small><input type="number" id="f5" step="any" value="33.6"></label>
+        <label>Diabetes pedigree function <small>family-history score</small><input type="number" id="f6" step="any" value="0.627"></label>
+        <label>Age <small>years</small><input type="number" id="f7" step="1" value="50"></label>
+      </div>
+      <div class="actions">
+        <button class="primary" onclick="runClassifier()">Predict</button>
+        <button onclick="preset('pos')">Example: diabetic</button>
+        <button onclick="preset('neg')">Example: non-diabetic</button>
+      </div>
+    </section>
+
+    <section class="card result">
+      <h2>Prediction</h2>
+      <div id="output"><p class="muted">Press “Predict”.</p></div>
+      <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
+      <h2>Deployed model</h2>
+      <div id="modelInfo" class="muted">Loading metrics…</div>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:20px">
+    <h2>Model comparison (test set, mean of 5 seeds)</h2>
+    <div id="compare" class="muted">Loading…</div>
+  </section>
+
+  <footer>Dataset: Pima Indians Diabetes (NIDDK / UCI). Educational demo – not a diagnostic tool.</footer>
+</main>
+</body>
+</html>
