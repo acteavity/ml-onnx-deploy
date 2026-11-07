@@ -1,0 +1,175 @@
+{
+  "task": "classification",
+  "dataset": "Pima Indians Diabetes",
+  "features": [
+    "pregnancies",
+    "glucose",
+    "blood_pressure",
+    "skin_thickness",
+    "insulin",
+    "bmi",
+    "dpf",
+    "age"
+  ],
+  "units": {
+    "pregnancies": "count",
+    "glucose": "mg/dL (2-h OGTT)",
+    "blood_pressure": "mm Hg (diastolic)",
+    "skin_thickness": "mm (triceps)",
+    "insulin": "\u00b5U/mL (2-h serum)",
+    "bmi": "kg/m\u00b2",
+    "dpf": "diabetes pedigree function",
+    "age": "years"
+  },
+  "zero_as_missing": [
+    "glucose",
+    "blood_pressure",
+    "skin_thickness",
+    "insulin",
+    "bmi"
+  ],
+  "defaults": [
+    3.0,
+    117.0,
+    72.0,
+    29.0,
+    126.0,
+    32.400001525878906,
+    0.38499999046325684,
+    30.0
+  ],
+  "best_model": "MLP",
+  "best_seed": 0,
+  "threshold_default": 0.5,
+  "threshold_tuned": 0.35,
+  "test_metrics": {
+    "accuracy": 0.7931034482758621,
+    "precision": 0.7073170731707317,
+    "recall": 0.7073170731707317,
+    "F1": 0.7073170731707317,
+    "F1_macro": 0.7736585365853659,
+    "MCC": 0.5473170731707317,
+    "ROC_AUC": 0.8660162601626016
+  },
+  "test_metrics_tuned": {
+    "accuracy": 0.7758620689655172,
+    "precision": 0.6470588235294118,
+    "recall": 0.8048780487804879,
+    "F1": 0.717391304347826,
+    "F1_macro": 0.7658385093167701,
+    "MCC": 0.544045837704778,
+    "ROC_AUC": 0.8660162601626016
+  },
+  "confusion_matrix": [
+    [
+      63,
+      12
+    ],
+    [
+      12,
+      29
+    ]
+  ],
+  "n_train": 537,
+  "n_val": 115,
+  "n_test": 116,
+  "class_counts": {
+    "0": 500,
+    "1": 268
+  },
+  "zeros": {
+    "glucose": 5,
+    "blood_pressure": 35,
+    "skin_thickness": 227,
+    "insulin": 374,
+    "bmi": 11
+  },
+  "summary": [
+    {
+      "model": "Logistic Regression",
+      "val_F1": 0.6378242447207965,
+      "accuracy": 0.7810344827586206,
+      "precision": 0.6978561789088105,
+      "recall": 0.6731707317073171,
+      "F1": 0.6851009476254761,
+      "F1_macro": 0.7586122785242206,
+      "MCC": 0.5177384493783375,
+      "ROC_AUC": 0.8585365853658538,
+      "F1_std": 0.020467576798245804,
+      "epochs": 153.6
+    },
+    {
+      "model": "MLP",
+      "val_F1": 0.6534228543506894,
+      "accuracy": 0.7844827586206897,
+      "precision": 0.6895328387500821,
+      "recall": 0.7121951219512195,
+      "F1": 0.7002152874763065,
+      "F1_macro": 0.7659448993832161,
+      "MCC": 0.5327466899161865,
+      "ROC_AUC": 0.8610081300813007,
+      "F1_std": 0.014945769336197479,
+      "epochs": 90.0
+    },
+    {
+      "model": "Deep NN",
+      "val_F1": 0.6491129503191214,
+      "accuracy": 0.7758620689655172,
+      "precision": 0.6733783082511676,
+      "recall": 0.7121951219512195,
+      "F1": 0.6918963150670467,
+      "F1_macro": 0.7578385479239138,
+      "MCC": 0.5168889697675169,
+      "ROC_AUC": 0.8532682926829269,
+      "F1_std": 0.0161118681113527,
+      "epochs": 70.8
+    },
+    {
+      "model": "F1+F2",
+      "val_F1": 0.6455895647681777,
+      "accuracy": 0.7793103448275862,
+      "precision": 0.6964943665066065,
+      "recall": 0.6682926829268293,
+      "F1": 0.6817510548523207,
+      "F1_macro": 0.7563821331030447,
+      "MCC": 0.5135679312925445,
+      "ROC_AUC": 0.8558048780487806,
+      "F1_std": 0.012375085768552193,
+      "epochs": 235.0
+    },
+    {
+      "model": "ResidualNet",
+      "val_F1": 0.6471750970627375,
+      "accuracy": 0.7879310344827586,
+      "precision": 0.7032703475386402,
+      "recall": 0.6926829268292682,
+      "F1": 0.6978258834797183,
+      "F1_macro": 0.7672235317621837,
+      "MCC": 0.5346365349194826,
+      "ROC_AUC": 0.8657560975609757,
+      "F1_std": 0.012263535969563491,
+      "epochs": 69.4
+    }
+  ],
+  "permutation_importance": {
+    "glucose": 0.17099186991869916,
+    "bmi": 0.060260162601625984,
+    "age": 0.009441734417344128,
+    "pregnancies": 0.0049430894308942685,
+    "insulin": 0.0032520325203251616,
+    "skin_thickness": -0.00018428184281847523,
+    "dpf": -0.0002601626016260646,
+    "blood_pressure": -0.004292682926829302
+  },
+  "target_corr": {
+    "pregnancies": 0.23116543589101576,
+    "glucose": 0.4972246330353086,
+    "blood_pressure": 0.1725660497075888,
+    "skin_thickness": 0.20096974162779876,
+    "insulin": 0.24712623249700763,
+    "bmi": 0.3162002843061826,
+    "dpf": 0.14458274769157198,
+    "age": 0.22985325146849306
+  },
+  "torch_version": "2.14.1+cpu"
+}

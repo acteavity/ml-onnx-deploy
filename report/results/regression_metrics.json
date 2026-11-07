@@ -1,0 +1,161 @@
+{
+  "task": "regression",
+  "dataset": "Concrete Compressive Strength (UCI)",
+  "features": [
+    "cement",
+    "slag",
+    "ash",
+    "water",
+    "superplastic",
+    "coarseagg",
+    "fineagg",
+    "age"
+  ],
+  "units": {
+    "cement": "kg/m\u00b3",
+    "slag": "kg/m\u00b3",
+    "ash": "kg/m\u00b3",
+    "water": "kg/m\u00b3",
+    "superplastic": "kg/m\u00b3",
+    "coarseagg": "kg/m\u00b3",
+    "fineagg": "kg/m\u00b3",
+    "age": "days",
+    "strength": "MPa"
+  },
+  "defaults": [
+    260.8999938964844,
+    22.0,
+    0.0,
+    185.6999969482422,
+    6.300000190734863,
+    968.0,
+    780.5999755859375,
+    28.0
+  ],
+  "mins": [
+    102.0,
+    0.0,
+    0.0,
+    121.80000305175781,
+    0.0,
+    801.0,
+    594.0,
+    1.0
+  ],
+  "maxs": [
+    540.0,
+    359.3999938964844,
+    200.10000610351562,
+    247.0,
+    32.20000076293945,
+    1145.0,
+    992.5999755859375,
+    365.0
+  ],
+  "best_model": "ResidualNet",
+  "best_seed": 3,
+  "test_metrics": {
+    "R2": 0.9171388149261475,
+    "MAE": 3.1061766147613525,
+    "RMSE": 4.561913439526919
+  },
+  "n_train": 703,
+  "n_val": 151,
+  "n_test": 151,
+  "n_rows_raw": 1030,
+  "n_duplicates_removed": 25,
+  "summary": [
+    {
+      "model": "Linear",
+      "val_R2": 0.8115600705146789,
+      "test_R2_mean": 0.7636380672454834,
+      "test_R2_std": 0.00018161273818425143,
+      "test_MAE": 6.03725004196167,
+      "test_RMSE": 7.704780511967796,
+      "epochs": 469.6
+    },
+    {
+      "model": "MLP",
+      "val_R2": 0.9097455620765686,
+      "test_R2_mean": 0.899923837184906,
+      "test_R2_std": 0.011063836912028472,
+      "test_MAE": 3.420312738418579,
+      "test_RMSE": 5.007215690757894,
+      "epochs": 853.6
+    },
+    {
+      "model": "Deep NN",
+      "val_R2": 0.9045364379882812,
+      "test_R2_mean": 0.9110501170158386,
+      "test_R2_std": 0.006085437610940497,
+      "test_MAE": 3.1762178421020506,
+      "test_RMSE": 4.724364010782958,
+      "epochs": 353.8
+    },
+    {
+      "model": "F1+F2",
+      "val_R2": 0.8558795928955079,
+      "test_R2_mean": 0.8408679008483887,
+      "test_R2_std": 0.009009228948377121,
+      "test_MAE": 4.974489784240722,
+      "test_RMSE": 6.3199384550784306,
+      "epochs": 1527.6
+    },
+    {
+      "model": "ResidualNet",
+      "val_R2": 0.9170255303382874,
+      "test_R2_mean": 0.9161210060119629,
+      "test_R2_std": 0.00775946130336312,
+      "test_MAE": 3.149232864379883,
+      "test_RMSE": 4.586089567445617,
+      "epochs": 732.8
+    }
+  ],
+  "ablation": [
+    {
+      "model": "Linear",
+      "age feature": "raw age",
+      "test_R2_mean": 0.5062055349349975,
+      "test_R2_std": 0.0021581362858910796
+    },
+    {
+      "model": "Linear",
+      "age feature": "log(1+age)",
+      "test_R2_mean": 0.7636380672454834,
+      "test_R2_std": 0.00016243937126393066
+    },
+    {
+      "model": "MLP",
+      "age feature": "raw age",
+      "test_R2_mean": 0.8780592560768128,
+      "test_R2_std": 0.01827528484561068
+    },
+    {
+      "model": "MLP",
+      "age feature": "log(1+age)",
+      "test_R2_mean": 0.899923837184906,
+      "test_R2_std": 0.009895796570906806
+    }
+  ],
+  "permutation_importance": {
+    "cement": 1.4110149145126343,
+    "age": 0.8619038999080658,
+    "slag": 0.8206173807382584,
+    "ash": 0.3579136818647385,
+    "water": 0.2616913467645645,
+    "fineagg": 0.15901587009429932,
+    "coarseagg": 0.1306409329175949,
+    "superplastic": 0.10512883365154266
+  },
+  "target_corr": {
+    "cement": 0.4978319193241552,
+    "slag": 0.1348292614974053,
+    "ash": -0.10575491629731448,
+    "water": -0.28963338498530294,
+    "superplastic": 0.3660788271885193,
+    "coarseagg": -0.16493461446011212,
+    "fineagg": -0.16724124729005901,
+    "age": 0.3288730007799875
+  },
+  "torch_version": "2.14.1+cpu"
+}

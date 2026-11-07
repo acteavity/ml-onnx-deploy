@@ -7,7 +7,15 @@ ITS 52000 – Applied Machine Learning · Hoang Thien Thanh Le (Tea)
 | Regression | Concrete Compressive Strength (UCI, 1 030 rows, 8 inputs) | strength (MPa) | Linear, MLP, Deep NN, F1+F2, ResidualNet | R² (+ MAE, RMSE) |
 | Classification | Pima Indians Diabetes (768 rows, 8 inputs) | diabetes 0/1 | Logistic Regression, MLP, Deep NN, F1+F2, ResidualNet | F-measure (+ precision, recall, MCC, ROC-AUC, confusion matrix, correlation matrix) |
 
-Live demo: `https://<your-username>.github.io/<repo>/`
+Live demo: https://acteavity.github.io/ml-onnx-deploy/
+
+## Results (test set)
+| Task | Deployed model | Result |
+|---|---|---|
+| Regression – concrete strength | ResidualNet | R² = 0.917 · MAE = 3.11 MPa · RMSE = 4.56 MPa |
+| Classification – diabetes | MLP | F1 = 0.707 · accuracy = 0.793 · ROC-AUC = 0.866 · MCC = 0.547 |
+
+Full write-up: [`report/REPORT.md`](report/REPORT.md) (Word version: `report/REPORT.docx`).
 
 ## Repository layout
 ```
@@ -15,6 +23,7 @@ notebooks/
   1_regression_concrete.ipynb      # full regression pipeline + ONNX export
   2_classification_pima.ipynb      # full classification pipeline + ONNX export
   3_make_report.ipynb              # builds REPORT.md / REPORT.docx from your results
+report/                            # REPORT.md, REPORT.docx, figures/, results/ (CSV + JSON metrics)
 data/                              # local copies of both CSVs (notebooks also download them)
 docs/                              # GitHub Pages site (onnxruntime-web)
   index.html  style.css
